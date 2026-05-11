@@ -6,6 +6,9 @@ import logger from './config/logger';
 import { requestLoggerMiddleware, errorHandler } from './middleware/logging';
 import authRoutes from './routes/auth';
 import assetRoutes from './routes/assets';
+import basesRoutes from './routes/bases';
+import usersRoutes from './routes/users';
+import reportsRoutes from './routes/reports';
 
 dotenv.config();
 
@@ -20,6 +23,9 @@ app.use(requestLoggerMiddleware);
 
 // Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/bases', basesRoutes);
+app.use('/api/users', usersRoutes);
+app.use('/api/reports', reportsRoutes);
 app.use('/api', assetRoutes);
 
 // Health check
