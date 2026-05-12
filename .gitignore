@@ -32,3 +32,12 @@ Thumbs.db
 *.db
 *.sqlite
 *.sqlite3
+
+# Logs
+*.log
+combined.log
+error.log
+
+# Lock files
+package-lock.json
+yarn.lock
