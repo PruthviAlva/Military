@@ -3,9 +3,8 @@ services:
     name: military-backend
     env: node
     plan: free
-    root_dir: backend
-    buildCommand: npm ci && npm run build
-    startCommand: npm start
+    buildCommand: cd backend && npm ci && npm run build
+    startCommand: cd backend && npm start
     envVars:
       - key: NODE_ENV
         value: production
