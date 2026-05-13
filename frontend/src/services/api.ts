@@ -4,8 +4,9 @@ class ApiService {
   private api: AxiosInstance;
 
   constructor() {
+    const apiUrl = (import.meta.env as any).VITE_API_URL || 'http://localhost:5000/api';
     this.api = axios.create({
-      baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api',
+      baseURL: apiUrl,
       headers: {
         'Content-Type': 'application/json',
       },
@@ -67,6 +68,11 @@ class ApiService {
   // Expenditure endpoints
   recordExpenditure(assetId: string, quantity: number, reason: string) {
     return this.api.post('/expenditures', { asset_id: assetId, quantity, reason });
+  }
+
+  // Generic GET method for reports and other endpoints
+  get(endpoint: string) {
+    return this.api.get(endpoint);
   }
 }
 

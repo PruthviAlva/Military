@@ -4,7 +4,6 @@ import api from '../services/api';
 import Navbar from '../components/Navbar';
 
 const AssignmentsPage: React.FC = () => {
-  const { user } = useAuth();
   const [activeTab, setActiveTab] = useState<'assignment' | 'expenditure'>('assignment');
   const [assignmentForm, setAssignmentForm] = useState({
     asset_id: '',

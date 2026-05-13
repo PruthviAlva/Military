@@ -8,6 +8,7 @@ interface AuditLog {
   user_id: string;
   action: string;
   resource_type: string;
+  resource_id: string;
   created_at: string;
 }
 
