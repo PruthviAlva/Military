@@ -2,6 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 const { Pool } = require('pg');
+require('dotenv').config();
 
 const DATABASE_URL = process.env.DATABASE_URL;
 

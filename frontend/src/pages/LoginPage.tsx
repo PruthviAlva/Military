@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 const LoginPage: React.FC = () => {
@@ -69,13 +69,12 @@ const LoginPage: React.FC = () => {
           </button>
         </form>
 
-        <div className="mt-8 p-4 bg-blue-50 rounded-lg text-sm text-gray-700">
-          <p className="font-semibold mb-2">Demo Credentials:</p>
-          <p>Admin: admin@military.com</p>
-          <p>Commander: commander@fort-bragg.com</p>
-          <p>Logistics: logistics@military.com</p>
-          <p className="mt-2">Password: password123</p>
-        </div>
+        <p className="text-center text-gray-600 mt-6">
+          Don't have an account?{' '}
+          <Link to="/register" className="text-blue-600 hover:text-blue-800 font-semibold">
+            Register here
+          </Link>
+        </p>
       </div>
     </div>
   );

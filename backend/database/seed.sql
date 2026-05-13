@@ -7,15 +7,15 @@ INSERT INTO bases (id, name, location) VALUES
   ('550e8400-e29b-41d4-a716-446655440003'::UUID, 'Fort Stewart', 'Georgia')
 ON CONFLICT (name) DO NOTHING;
 
--- Insert users (passwords are hashed with bcrypt in production)
+-- Insert users (passwords are hashed with bcrypt)
 -- Admin user: admin@military.com / password123
 -- Base Commander: commander@fort-bragg.com / password123
 -- Logistics Officer: logistics@military.com / password123
 INSERT INTO users (id, email, password, role, base_id) VALUES
-  ('550e8400-e29b-41d4-a716-446655440011'::UUID, 'admin@military.com', '$2a$10$YourHashedPasswordHere', 'admin', NULL),
-  ('550e8400-e29b-41d4-a716-446655440012'::UUID, 'commander@fort-bragg.com', '$2a$10$YourHashedPasswordHere', 'base_commander', '550e8400-e29b-41d4-a716-446655440001'::UUID),
-  ('550e8400-e29b-41d4-a716-446655440013'::UUID, 'logistics@military.com', '$2a$10$YourHashedPasswordHere', 'logistics_officer', NULL)
-ON CONFLICT (email) DO NOTHING;
+  ('550e8400-e29b-41d4-a716-446655440011'::UUID, 'admin@military.com', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcg7b3XeKeUxWdeS86E36p4rWjO', 'admin', NULL),
+  ('550e8400-e29b-41d4-a716-446655440012'::UUID, 'commander@fort-bragg.com', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcg7b3XeKeUxWdeS86E36p4rWjO', 'base_commander', '550e8400-e29b-41d4-a716-446655440001'::UUID),
+  ('550e8400-e29b-41d4-a716-446655440013'::UUID, 'logistics@military.com', '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcg7b3XeKeUxWdeS86E36p4rWjO', 'logistics_officer', NULL)
+ON CONFLICT (email) DO UPDATE SET password = EXCLUDED.password;
 
 -- Insert sample assets
 INSERT INTO assets (id, base_id, name, type, opening_balance) VALUES

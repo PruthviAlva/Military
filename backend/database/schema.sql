@@ -90,13 +90,13 @@ CREATE TABLE IF NOT EXISTS audit_logs (
 );
 
 -- Create indexes
-CREATE INDEX idx_users_email ON users(email);
-CREATE INDEX idx_assets_base_id ON assets(base_id);
-CREATE INDEX idx_purchases_asset_id ON purchases(asset_id);
-CREATE INDEX idx_transfers_from_base ON transfers(from_base_id);
-CREATE INDEX idx_transfers_to_base ON transfers(to_base_id);
-CREATE INDEX idx_assignments_asset_id ON assignments(asset_id);
-CREATE INDEX idx_expenditures_asset_id ON expenditures(asset_id);
-CREATE INDEX idx_audit_logs_user_id ON audit_logs(user_id);
-CREATE INDEX idx_audit_logs_resource ON audit_logs(resource_type, resource_id);
-CREATE INDEX idx_audit_logs_created ON audit_logs(created_at);
+CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
+CREATE INDEX IF NOT EXISTS idx_assets_base_id ON assets(base_id);
+CREATE INDEX IF NOT EXISTS idx_purchases_asset_id ON purchases(asset_id);
+CREATE INDEX IF NOT EXISTS idx_transfers_from_base ON transfers(from_base_id);
+CREATE INDEX IF NOT EXISTS idx_transfers_to_base ON transfers(to_base_id);
+CREATE INDEX IF NOT EXISTS idx_assignments_asset_id ON assignments(asset_id);
+CREATE INDEX IF NOT EXISTS idx_expenditures_asset_id ON expenditures(asset_id);
+CREATE INDEX IF NOT EXISTS idx_audit_logs_user_id ON audit_logs(user_id);
+CREATE INDEX IF NOT EXISTS idx_audit_logs_resource ON audit_logs(resource_type, resource_id);
+CREATE INDEX IF NOT EXISTS idx_audit_logs_created ON audit_logs(created_at);
